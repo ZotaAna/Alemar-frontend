@@ -33,7 +33,7 @@ export default function Cont() {
   const headers = { "Content-Type": "application/json", Authorization: `Bearer ${token}` };
 
   const fetchProfil = async () => {
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/profile", { headers });
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/profile`, { headers });
     const data = await res.json();
     setProfil({ first_name: data.first_name || "", last_name: data.last_name || "", phone: data.phone || "" });
   };
