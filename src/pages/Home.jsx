@@ -13,7 +13,7 @@ const user = (storedUser && token) ? JSON.parse(storedUser) : null;
 const nume = user?.first_name || user?.firstName || null;
 
   useEffect(() => {
-    fetch("${process.env.REACT_APP_API_URL}/api/products")
+    fetch(`${process.env.REACT_APP_API_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => setProduse(data))
       .catch((err) => console.error("Eroare la fetch produse:", err));
