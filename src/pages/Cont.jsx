@@ -27,6 +27,7 @@ export default function Cont() {
     fetchProfil();
     fetchComenzi();
     fetchAdrese();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const headers = { "Content-Type": "application/json", Authorization: `Bearer ${token}` };

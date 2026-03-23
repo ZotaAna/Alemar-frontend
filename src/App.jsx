@@ -4,7 +4,6 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import LoginSuccess from "./pages/LoginSuccess";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Produse from "./pages/Produse";
 import Cos from "./pages/Cos";
 import Comanda from "./pages/Comanda";
