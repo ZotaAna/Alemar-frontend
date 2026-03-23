@@ -39,20 +39,20 @@ export default function Cont() {
   };
 
   const fetchComenzi = async () => {
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/orders", { headers });
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/orders`, { headers });
     const data = await res.json();
     setComenzi(data);
   };
 
   const fetchAdrese = async () => {
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/addresses", { headers });
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/addresses`, { headers });
     const data = await res.json();
     setAdrese(data);
   };
 
   const salveazaProfil = async () => {
     setMesaj(""); setEroare("");
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/profile", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/profile`, {
       method: "PUT", headers, body: JSON.stringify(profil)
     });
     if (res.ok) setMesaj("Profil actualizat cu succes!");
@@ -69,7 +69,7 @@ export default function Cont() {
       setEroare("Parola nouă trebuie să aibă minim 6 caractere.");
       return;
     }
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/password", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/password`, {
       method: "PUT", headers,
       body: JSON.stringify({ parola_veche: parole.parola_veche, parola_noua: parole.parola_noua })
     });
@@ -84,7 +84,7 @@ export default function Cont() {
       setEroare("Completează câmpurile obligatorii.");
       return;
     }
-    const res = await fetch("${process.env.REACT_APP_API_URL}/api/user/addresses", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/user/addresses`, {
       method: "POST", headers, body: JSON.stringify(adresaNoua)
     });
     if (res.ok) {
