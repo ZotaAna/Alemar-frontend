@@ -1,0 +1,329 @@
+/* ---------- CONTAINER ---------- */
+.cont-container {
+  padding: 14rem 2rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- LAYOUT ---------- */
+.cont-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ---------- SIDEBAR ---------- */
+.cont-sidebar {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  position: sticky;
+  top: 14rem;
+}
+
+.cont-avatar {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.avatar-cerc {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a16943, #c9914f);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.6rem;
+}
+
+.avatar-nume {
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.cont-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cont-nav button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: #444;
+  font-family: 'Lato', sans-serif;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cont-nav button:hover {
+  background: #fdf6f0;
+  color: #a16943;
+}
+
+.cont-nav button.activ {
+  background: #fdf6f0;
+  color: #a16943;
+  font-weight: 600;
+}
+
+.delogare-btn {
+  margin-top: 1rem;
+  color: #e74c3c !important;
+}
+
+.delogare-btn:hover {
+  background: #fff5f5 !important;
+  color: #c0392b !important;
+}
+
+/* ---------- CONTINUT ---------- */
+.cont-continut {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cont-sectiune {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+}
+
+.cont-sectiune h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.cont-sectiune h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin: 1.5rem 0 1rem;
+}
+
+/* ---------- FORM ---------- */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #a16943;
+}
+
+.optional {
+  color: #aaa;
+  font-weight: 400;
+  font-size: 0.82rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+/* ---------- BUTON ---------- */
+.cont-btn {
+  background-color: #a16943ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Lato', sans-serif;
+}
+
+.cont-btn:hover {
+  background-color: #8a5836;
+}
+
+/* ---------- MESAJE ---------- */
+.cont-mesaj {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.cont-mesaj.succes {
+  background: #eafaf1;
+  color: #27ae60;
+}
+
+.cont-mesaj.eroare {
+  background: #fdf0f0;
+  color: #e74c3c;
+}
+
+/* ---------- COMENZI ---------- */
+.comanda-card {
+  border: 1.5px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comanda-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.comanda-nr {
+  font-weight: 700;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.comanda-status {
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.comanda-data {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 0 0 0.6rem;
+}
+
+.comanda-produse {
+  border-top: 1px solid #f5f5f5;
+  padding-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.comanda-produse p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.comanda-total {
+  font-size: 0.95rem;
+  color: #222;
+  margin: 0;
+}
+
+.cont-gol {
+  color: #888;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ---------- ADRESE ---------- */
+.adresa-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.adresa-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.adresa-default {
+  background: #fdf6f0;
+  color: #a16943;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.adresa-sterge {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.adresa-sterge:hover {
+  color: #e74c3c;
+}
+
+.adresa-adauga-titlu {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .cont-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cont-sidebar {
+    position: static;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

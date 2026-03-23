@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #f4f6fb;
+}
+
+/* ---------- PROMO BANNER ---------- */
+.promo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 8px 2rem;
+}
+
+.promo-item {
+  font-size: 0.78rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.promo-separator {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .promo-banner {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 1rem;
+  }
+
+  .promo-separator {
+    display: none;
+  }
+
+  .promo-item {
+    white-space: normal;
+    font-size: 0.72rem;
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: fixed;
+  top: 37px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000107;
+  padding: 1rem 1.2rem;
+  color: white;
+  z-index: 1000;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  white-space: nowrap;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #f2f2f7;
+}
+
+/* ---------- HAMBURGER ---------- */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 3px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #a16943ce;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0 0 0 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* ---------- HOME CONTENT ---------- */
+.home-container {
+  padding: 9rem 2rem 2rem;
+  text-align: center;
+}
+
+.home-container h1 {
+  color: #333;
+}
+
+.home-container p {
+  color: #555;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ---------- SEARCH BAR ---------- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 1rem;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background-color: #a16943ce;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: #a16943ce;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 100%;
+    margin: 1rem 0;
+    order: 3;
+  }
+}
+
+/* ---------- WELCOME BANNER ---------- */
+.welcome-banner {
+  position: fixed;
+  top: 109px;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #ffffff, #a16943ce);
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
+/* ---------- NAV LOGIN ---------- */
+.nav-login-btn {
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-login-btn:hover {
+  color: #f2f2f7 !important;
+}
+
+/* ---------- CARUSEL ---------- */
+.carousel-section {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 10px;
+}
+
+.carousel-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.2rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.produs-card {
+  min-width: 220px;
+  max-width: 220px;
+  flex: 0 0 220px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.produs-card:hover {
+  transform: translateY(-4px);
+}
+
+.produs-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.produs-info {
+  padding: 12px;
+}
+
+.produs-nume {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #222;
+  margin: 0 0 6px;
+}
+
+.produs-stele {
+  margin-bottom: 6px;
+}
+
+.stea.plina {
+  color: #f5a623;
+  font-size: 1rem;
+}
+
+.stea.goala {
+  color: #ddd;
+  font-size: 1rem;
+}
+
+.produs-pret {
+  font-weight: 700;
+  color: #a16943;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.carousel-btn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #333;
+  transition: background 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: #f0f0f0;
+}
+
+.nav-link-activ {
+  color: #c9914f !important;
+  font-weight: 600 !important;
+}

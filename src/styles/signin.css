@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+
+
+
+.signin-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.signin-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.signin-form input:focus {
+  border-color: #a16943ce;
+}
+
+.signin-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.5rem;
+  background-color: #a16943ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signin-form button:hover {
+  background-color: #6c70f7;
+}
+
+.signin-login-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.signin-login-link a {
+  color: #4e54c8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signin-login-link a:hover {
+  text-decoration: underline;
+}
