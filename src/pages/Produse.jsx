@@ -14,7 +14,7 @@ export default function Produse() {
   const cosKey = `cos_${userId}`;
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/products")
+    fetch(`${process.env.REACT_APP_API_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProduse(data);
