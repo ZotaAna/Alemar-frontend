@@ -32,7 +32,7 @@ export default function LoginSuccess() {
       
       // Salvează în localStorage
       localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("authToken", token);
+      localStorage.setItem("token", token);
       
       console.log("✅ User salvat în localStorage:", user);
       console.log("🔵 Navighez spre /home...");
