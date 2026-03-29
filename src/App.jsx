@@ -9,6 +9,9 @@ import Cos from "./pages/Cos";
 import Comanda from "./pages/Comanda";
 import Cont from "./pages/Cont";
 import ComandaConfirmata from "./pages/ComandaConfirmata";
+import VerifyEmail from "./pages/VerifyEmail";
+
+
 
 function App() {
   return (
@@ -24,6 +27,7 @@ function App() {
       <Route path="/comanda" element={<Comanda />} />
       <Route path="/cont" element={<Cont />} />
       <Route path="/comanda-confirmata" element={<ComandaConfirmata />} />
+    <Route path="/verify-email" element={<VerifyEmail />} />  
       </Routes>
     </Router>
   );

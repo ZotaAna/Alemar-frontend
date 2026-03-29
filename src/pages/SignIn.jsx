@@ -44,12 +44,11 @@ export default function SignIn() {
         return;
       }
 
-      if (data.voucher) {
-        alert(`Cont creat cu succes! 🎉\nCodul tău de reducere 10% pentru prima comandă este:\n\n${data.voucher}\n\nReține-l, îl poți folosi la finalizarea comenzii!`);
-      } else {
-        alert("Cont creat cu succes!");
-      }
-      navigate("/login");
+      // Salvăm userId și voucherul, apoi mergem la verificare
+      localStorage.setItem("pendingUserId", data.userId);
+      localStorage.setItem("pendingVoucher", data.voucher || "");
+      navigate("/verify-email");
+
     } catch (err) {
       console.error(err);
       alert("Nu pot conecta la server (backend).");
