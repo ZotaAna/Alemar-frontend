@@ -102,7 +102,7 @@ export default function Cont() {
   const delogare = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   const statusCuloare = (status) => {
