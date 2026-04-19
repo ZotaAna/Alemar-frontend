@@ -164,3 +164,8 @@
     grid-template-columns: 1fr;
   }
 }
+
+.welcome-banner {
+  position: relative !important;
+  top: auto !important;
+}
