@@ -98,7 +98,7 @@ const nume = user?.first_name || user?.firstName || null;
           <div className="carousel-wrapper">
             <button className="carousel-btn stanga" onClick={scrollLeft}>‹</button>
             <div className="carousel-track" ref={carouselRef}>
-              {produse.map((produs) => (
+              {(produse || []).map((produs) => (
                 <div className="produs-card" key={produs.id}>
                   <img
                     src={produs.image_url}
