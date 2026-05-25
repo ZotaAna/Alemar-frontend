@@ -11,6 +11,7 @@ import Cont from "./pages/Cont";
 import ComandaConfirmata from "./pages/ComandaConfirmata";
 import VerifyEmail from "./pages/VerifyEmail";
 import ProdusPagina from "./pages/ProdusPagina";
+import ResetParola from "./pages/ResetParola";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/cont" element={<Cont />} />
         <Route path="/comanda-confirmata" element={<ComandaConfirmata />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/reset-parola" element={<ResetParola />} />
       </Routes>
     </Router>
   );

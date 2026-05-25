@@ -76,6 +76,15 @@ function Login() {
             {isLoading ? "Se conectează..." : "Conectare"}
           </button>
 
+          <p style={{ textAlign: "right", margin: "-8px 0 8px 0" }}>
+            <span
+              style={{ color: "#a16943", cursor: "pointer", fontSize: "14px" }}
+              onClick={() => navigate("/reset-parola")}
+            >
+              Ai uitat parola?
+            </span>
+          </p>
+
           <div style={{ textAlign: "center", margin: "15px 0" }}>
             sau
           </div>
