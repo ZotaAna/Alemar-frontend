@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "../styles/signin.css";
 import { useNavigate } from "react-router-dom";
+import Toast from "../components/Toast";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const [toast, setToast] = useState(null);
+  const closeToast = useCallback(() => setToast(null), []);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -21,7 +24,7 @@ export default function SignIn() {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Parolele nu coincid!");
+      setToast({ mesaj: "Parolele nu coincid!", tip: "eroare" });
       return;
     }
 
@@ -40,23 +43,23 @@ export default function SignIn() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.message || "Eroare la creare cont");
+        setToast({ mesaj: data.message || "Eroare la creare cont", tip: "eroare" });
         return;
       }
 
-      // Salvăm userId și voucherul, apoi mergem la verificare
       localStorage.setItem("pendingUserId", data.userId);
       localStorage.setItem("pendingVoucher", data.voucher || "");
       navigate("/verify-email");
 
     } catch (err) {
       console.error(err);
-      alert("Nu pot conecta la server (backend).");
+      setToast({ mesaj: "Nu pot conecta la server (backend).", tip: "eroare" });
     }
   };
 
   return (
     <div className="signin-container">
+      {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
       <form className="signin-form" onSubmit={handleSubmit}>
         <h2>Creează un cont</h2>
 

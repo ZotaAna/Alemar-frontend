@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import Toast from "../components/Toast";
 
 export default function VerifyEmail() {
   const navigate = useNavigate();
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [eroare, setEroare] = useState("");
+  const [toast, setToast] = useState(null);
+  const closeToast = useCallback(() => setToast(null), []);
 
   const userId = localStorage.getItem("pendingUserId");
   const voucher = localStorage.getItem("pendingVoucher");
@@ -34,17 +37,16 @@ export default function VerifyEmail() {
         return;
       }
 
-      // Curățăm localStorage
       localStorage.removeItem("pendingUserId");
       localStorage.removeItem("pendingVoucher");
 
       if (voucher) {
-        alert(`Cont verificat cu succes! 🎉\nCodul tău de reducere 10% pentru prima comandă este:\n\n${voucher}\n\nReține-l, îl poți folosi la finalizarea comenzii!`);
+        setToast({ mesaj: `Cont verificat! 🎉 Codul tău de reducere 10%: ${voucher}`, tip: "succes" });
       } else {
-        alert("Cont verificat cu succes!");
+        setToast({ mesaj: "Cont verificat cu succes! 🎉", tip: "succes" });
       }
 
-      navigate("/login");
+      setTimeout(() => navigate("/login"), 4000);
     } catch (err) {
       console.error(err);
       setEroare("Eroare de conexiune.");
@@ -54,6 +56,7 @@ export default function VerifyEmail() {
 
   return (
     <div className="signin-container">
+      {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
       <div className="signin-form">
         <h2>Verifică-ți emailul</h2>
         <p style={{ textAlign: "center", color: "#666", marginBottom: "20px" }}>

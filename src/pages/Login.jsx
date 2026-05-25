@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import AuthNavbar from "../components/AuthNavbar";
+import Toast from "../components/Toast";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState(null);
 
   const navigate = useNavigate();
+  const closeToast = useCallback(() => setToast(null), []);
 
-  // 🔹 LOGIN CLASIC (email + parola)
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -25,29 +27,29 @@ function Login() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.message || "Date de conectare incorecte!");
+        setToast({ mesaj: data.message || "Date de conectare incorecte!", tip: "eroare" });
         return;
       }
 
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("token", data.token);
-      alert("Te-ai conectat cu succes!");
-      navigate("/home");
+      setToast({ mesaj: "Te-ai conectat cu succes!", tip: "succes" });
+      setTimeout(() => navigate("/home"), 1500);
     } catch (err) {
       console.error(err);
-      alert("Nu pot conecta la server (backend).");
+      setToast({ mesaj: "Nu pot conecta la server (backend).", tip: "eroare" });
     } finally {
       setIsLoading(false);
     }
   };
 
-  // 🔹 LOGIN CU GOOGLE (doar redirect)
   const handleGoogleLogin = () => {
     window.location.href = `${process.env.REACT_APP_API_URL}/api/auth/google`;
   };
 
   return (
     <>
+      {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
       <AuthNavbar />
 
       <div className="login-container" style={{ marginTop: "100px" }}>
@@ -70,17 +72,14 @@ function Login() {
             required
           />
 
-          {/* LOGIN NORMAL */}
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Se conectează..." : "Conectare"}
           </button>
 
-          {/* SEPARATOR */}
           <div style={{ textAlign: "center", margin: "15px 0" }}>
             sau
           </div>
 
-          {/* LOGIN GOOGLE */}
           <button
             type="button"
             className="google-login-btn"

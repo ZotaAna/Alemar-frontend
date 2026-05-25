@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -8,10 +8,10 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "../styles/comanda.css";
+import Toast from "../components/Toast";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-// ─── Subcomponent: formularul de plată Stripe ───────────────────────────────
 function StripeForm({ clientSecret, onSuccess, onBack }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -52,7 +52,6 @@ function StripeForm({ clientSecret, onSuccess, onBack }) {
   );
 }
 
-// ─── Componenta principală ───────────────────────────────────────────────────
 export default function Comanda() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cos, setCos] = useState([]);
@@ -61,14 +60,15 @@ export default function Comanda() {
   const [erori, setErori] = useState({});
   const [clientSecret, setClientSecret] = useState(null);
   const [loadingIntent, setLoadingIntent] = useState(false);
+  const [toast, setToast] = useState(null);
 
-  // ── Voucher ──
   const [voucher, setVoucher] = useState("");
   const [voucherAplicat, setVoucherAplicat] = useState(null);
   const [voucherEroare, setVoucherEroare] = useState("");
   const [voucherLoading, setVoucherLoading] = useState(false);
 
   const navigate = useNavigate();
+  const closeToast = useCallback(() => setToast(null), []);
 
   const token = localStorage.getItem("token");
   const storedUser = localStorage.getItem("user");
@@ -127,7 +127,6 @@ export default function Comanda() {
     return eroriNoi;
   };
 
-  // ── Aplică voucher ──
   const aplicaVoucher = async () => {
     if (!voucher.trim()) return;
     setVoucherLoading(true);
@@ -158,7 +157,6 @@ export default function Comanda() {
     setVoucherLoading(false);
   };
 
-  // ── Marchează voucherul ca folosit ──
   const folosteVoucher = async () => {
     if (!voucherAplicat) return;
     await fetch(`${process.env.REACT_APP_API_URL}/api/vouchers/foloseste`, {
@@ -171,7 +169,6 @@ export default function Comanda() {
     });
   };
 
-  // ── Ramburs ──
   const handleSubmitRamburs = async () => {
     const eroriNoi = valideaza();
     if (Object.keys(eroriNoi).length > 0) {
@@ -179,12 +176,11 @@ export default function Comanda() {
       return;
     }
     await folosteVoucher();
-    alert("Comanda a fost plasată cu succes!");
+    setToast({ mesaj: "Comanda a fost plasată cu succes! 🎉", tip: "succes" });
     localStorage.removeItem(cosKey);
-    navigate("/");
+    setTimeout(() => navigate("/"), 2000);
   };
 
-  // ── Card ──
   const handleSubmitCard = async () => {
     const eroriNoi = valideaza();
     if (Object.keys(eroriNoi).length > 0) {
@@ -212,10 +208,10 @@ export default function Comanda() {
         await folosteVoucher();
         setClientSecret(data.clientSecret);
       } else {
-        alert("Eroare la inițializarea plății. Încearcă din nou.");
+        setToast({ mesaj: "Eroare la inițializarea plății. Încearcă din nou.", tip: "eroare" });
       }
     } catch (err) {
-      alert("Eroare de rețea. Încearcă din nou.");
+      setToast({ mesaj: "Eroare de rețea. Încearcă din nou.", tip: "eroare" });
     }
     setLoadingIntent(false);
   };
@@ -225,10 +221,10 @@ export default function Comanda() {
     else handleSubmitCard();
   };
 
-  // ── View Stripe ──
   if (clientSecret) {
     return (
       <div>
+        {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
         <div className="promo-banner">
           <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
           <span className="promo-separator">|</span>
@@ -294,9 +290,9 @@ export default function Comanda() {
     );
   }
 
-  // ── View normal ──
   return (
     <div>
+      {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
       <div className="promo-banner">
         <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
         <span className="promo-separator">|</span>
@@ -332,7 +328,6 @@ export default function Comanda() {
         <div className="comanda-layout">
           <div className="comanda-formular">
 
-            {/* DETALII PERSONALE */}
             <div className="comanda-sectiune">
               <h2 className="sectiune-titlu">Detalii personale</h2>
               <div className="form-row">
@@ -361,7 +356,6 @@ export default function Comanda() {
               </div>
             </div>
 
-            {/* ADRESA DE LIVRARE */}
             <div className="comanda-sectiune">
               <h2 className="sectiune-titlu">Adresa de livrare</h2>
               <div className="form-row">
@@ -404,7 +398,6 @@ export default function Comanda() {
               </div>
             </div>
 
-            {/* CURIERAT */}
             <div className="comanda-sectiune">
               <h2 className="sectiune-titlu">Curierat</h2>
               <div className="optiuni-livrare">
@@ -425,7 +418,6 @@ export default function Comanda() {
               </div>
             </div>
 
-            {/* METODA DE PLATA */}
             <div className="comanda-sectiune">
               <h2 className="sectiune-titlu">Metodă de plată</h2>
               <div className="optiuni-livrare">
@@ -448,7 +440,6 @@ export default function Comanda() {
 
           </div>
 
-          {/* SUMAR */}
           <div className="comanda-sumar">
             <h2 className="sectiune-titlu">Sumar comandă</h2>
             <div className="sumar-produse">
@@ -470,7 +461,6 @@ export default function Comanda() {
               </span>
             </div>
 
-            {/* VOUCHER */}
             <div className="voucher-section">
               <p className="voucher-label">Ai un cod de reducere?</p>
               <div className="voucher-row">
@@ -501,7 +491,6 @@ export default function Comanda() {
               )}
             </div>
 
-            {/* LINIE DISCOUNT */}
             {voucherAplicat && (
               <div className="sumar-linie" style={{ color: "#2e7d32" }}>
                 <span>Reducere ({voucherAplicat.discount_percent}%)</span>
