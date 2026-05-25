@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../styles/produse.css";
+import Toast from "../components/Toast";
 
 export default function Produse() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [produse, setProduse] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [toast, setToast] = useState(null);
 
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
@@ -46,6 +48,8 @@ export default function Produse() {
     return stele;
   };
 
+  const closeToast = useCallback(() => setToast(null), []);
+
   const adaugaInCos = (produs) => {
     const cosExistent = JSON.parse(localStorage.getItem(cosKey)) || [];
     const indexExistent = cosExistent.findIndex((p) => p.id === produs.id);
@@ -57,11 +61,13 @@ export default function Produse() {
     }
 
     localStorage.setItem(cosKey, JSON.stringify(cosExistent));
-    alert(`„${produs.name}" a fost adăugat în coș!`);
+    setToast({ mesaj: `„${produs.name}" a fost adăugat în coș!`, tip: "succes" });
   };
 
   return (
     <div>
+      {toast && <Toast mesaj={toast.mesaj} tip={toast.tip} onClose={closeToast} />}
+
       <div className="promo-banner">
         <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
         <span className="promo-separator">|</span>
