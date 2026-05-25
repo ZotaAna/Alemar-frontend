@@ -128,7 +128,7 @@ export default function Produse() {
         ) : (
           <div className="produse-grid">
             {produseAfisate.map((produs) => (
-              <div className="produs-card" key={produs.id}>
+              <div className="produs-card" key={produs.id} onClick={() => window.location.href = `/produs/${produs.slug}`} style={{ cursor: "pointer" }}>
                 <div className="produs-img-wrapper">
                   <img src={produs.image_url} alt={produs.name} className="produs-img" />
                 </div>

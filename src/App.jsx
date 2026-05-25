@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
@@ -10,8 +10,7 @@ import Comanda from "./pages/Comanda";
 import Cont from "./pages/Cont";
 import ComandaConfirmata from "./pages/ComandaConfirmata";
 import VerifyEmail from "./pages/VerifyEmail";
-
-
+import ProdusPagina from "./pages/ProdusPagina";
 
 function App() {
   return (
@@ -24,10 +23,11 @@ function App() {
         <Route path="/login-success" element={<LoginSuccess />} />
         <Route path="/cos" element={<Cos />} />
         <Route path="/produse" element={<Produse />} />
-      <Route path="/comanda" element={<Comanda />} />
-      <Route path="/cont" element={<Cont />} />
-      <Route path="/comanda-confirmata" element={<ComandaConfirmata />} />
-    <Route path="/verify-email" element={<VerifyEmail />} />  
+        <Route path="/produs/:slug" element={<ProdusPagina />} />
+        <Route path="/comanda" element={<Comanda />} />
+        <Route path="/cont" element={<Cont />} />
+        <Route path="/comanda-confirmata" element={<ComandaConfirmata />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
       </Routes>
     </Router>
   );
