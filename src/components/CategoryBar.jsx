@@ -7,9 +7,9 @@ export default function CategoryBar() {
   const [chatOpen, setChatOpen] = useState(false);
 
   const categories = [
-    { id: "dama", label: "Parfumuri de Damă", icon: "🌸", href: "/produse?categorie=dama" },
-    { id: "barbati", label: "Parfumuri de Bărbați", icon: "🌿", href: "/produse?categorie=barbati" },
-    { id: "unisex", label: "Parfumuri Unisex", icon: "✨", href: "/produse?categorie=unisex" },
+   { id: "dama", label: "Parfumuri de Damă", icon: "🌸", href: "/produse/dama" },
+{ id: "barbati", label: "Parfumuri de Bărbați", icon: "🌿", href: "/produse/barbati" },
+{ id: "unisex", label: "Parfumuri Unisex", icon: "✨", href: "/produse/unisex" },
   ];
 
   const handleCategoryClick = (cat) => {

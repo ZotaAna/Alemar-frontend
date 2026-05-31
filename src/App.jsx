@@ -12,6 +12,9 @@ import ComandaConfirmata from "./pages/ComandaConfirmata";
 import VerifyEmail from "./pages/VerifyEmail";
 import ProdusPagina from "./pages/ProdusPagina";
 import ResetParola from "./pages/ResetParola";
+import ProduseDama from "./pages/ProduseDama";
+import ProduseBarbati from "./pages/ProduseBarbati";
+import ProduseUnisex from "./pages/ProduseUnisex";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="/comanda-confirmata" element={<ComandaConfirmata />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/reset-parola" element={<ResetParola />} />
+        <Route path="/produse/dama" element={<ProduseDama />} />
+        <Route path="/produse/barbati" element={<ProduseBarbati />} />
+        <Route path="/produse/unisex" element={<ProduseUnisex />} />
       </Routes>
     </Router>
   );
