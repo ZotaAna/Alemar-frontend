@@ -1,6 +1,6 @@
 /* ---------- PRODUSE CONTAINER ---------- */
 .produse-container {
-  padding: 800px 2rem 4rem;
+  padding: 1200px 2rem 4rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -166,11 +166,11 @@
 }
 
 .produse-container--dama {
-  padding-top: 500px;
+  padding-top: 800px;
 }
 
 .produse-container--barbati {
-  padding-top: 500px;
+  padding-top: 800px;
 }
 
 .produse-container--unisex {
