@@ -14,6 +14,10 @@ export default function Produse() {
   const params = new URLSearchParams(window.location.search);
 const categorie = params.get("categorie");
 
+const categorie = params.get("categorie");
+console.log("categorie din URL:", categorie);
+console.log("produse incarcate:", produse.length, produse[0]?.gender);
+
   const genderMap = {
     dama: "women",
     barbati: "men",
