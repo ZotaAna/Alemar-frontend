@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/produse.css";
 import Toast from "../components/Toast";
+import CategoryBar from "../components/CategoryBar";
 
 export default function Produse() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,6 +10,22 @@ export default function Produse() {
   const [produse, setProduse] = useState([]);
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState(null);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const categorie = params.get("categorie");
+
+  const genderMap = {
+    dama: "women",
+    barbati: "men",
+    unisex: "unisex",
+  };
+
+  const titluMap = {
+    dama: "Parfumuri de Damă",
+    barbati: "Parfumuri de Bărbați",
+    unisex: "Parfumuri Unisex",
+  };
 
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
@@ -32,9 +50,14 @@ export default function Produse() {
     e.preventDefault();
   };
 
-  const produseAfisate = produse.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const produseAfisate = produse
+    .filter((p) => {
+      if (categorie && genderMap[categorie]) {
+        return p.gender === genderMap[categorie];
+      }
+      return true;
+    })
+    .filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   const renderStele = (rating) => {
     const stele = [];
@@ -50,7 +73,8 @@ export default function Produse() {
 
   const closeToast = useCallback(() => setToast(null), []);
 
-  const adaugaInCos = (produs) => {
+  const adaugaInCos = (e, produs) => {
+    e.stopPropagation();
     const cosExistent = JSON.parse(localStorage.getItem(cosKey)) || [];
     const indexExistent = cosExistent.findIndex((p) => p.id === produs.id);
 
@@ -107,13 +131,17 @@ export default function Produse() {
         </div>
       </nav>
 
+      <CategoryBar />
+
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
 
       <main className="produse-container">
         <div className="produse-header">
-          <h1 className="produse-titlu">Toate produsele</h1>
+          <h1 className="produse-titlu">
+            {categorie && titluMap[categorie] ? titluMap[categorie] : "Toate produsele"}
+          </h1>
           <p className="produse-subtitlu">
             {produseAfisate.length} {produseAfisate.length === 1 ? "produs găsit" : "produse găsite"}
           </p>
@@ -123,12 +151,17 @@ export default function Produse() {
           <div className="produse-loading">Se încarcă produsele...</div>
         ) : produseAfisate.length === 0 ? (
           <div className="produse-empty">
-            <p>Nu am găsit niciun produs pentru „{searchTerm}".</p>
+            <p>Nu am găsit niciun produs{searchTerm ? ` pentru „${searchTerm}"` : " în această categorie"}.</p>
           </div>
         ) : (
           <div className="produse-grid">
             {produseAfisate.map((produs) => (
-              <div className="produs-card" key={produs.id} onClick={() => window.location.href = `/produs/${produs.slug}`} style={{ cursor: "pointer" }}>
+              <div
+                className="produs-card"
+                key={produs.id}
+                onClick={() => window.location.href = `/produs/${produs.slug}`}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="produs-img-wrapper">
                   <img src={produs.image_url} alt={produs.name} className="produs-img" />
                 </div>
@@ -138,7 +171,7 @@ export default function Produse() {
                   <p className="produs-pret">
                     {(produs.price_cents / 100).toFixed(0)} {produs.currency}
                   </p>
-                  <button className="produs-btn" onClick={() => adaugaInCos(produs)}>
+                  <button className="produs-btn" onClick={(e) => adaugaInCos(e, produs)}>
                     Adaugă în coș
                   </button>
                 </div>
