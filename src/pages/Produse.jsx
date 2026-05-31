@@ -11,9 +11,8 @@ export default function Produse() {
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState(null);
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const categorie = params.get("categorie");
+  const params = new URLSearchParams(window.location.search);
+const categorie = params.get("categorie");
 
   const genderMap = {
     dama: "women",
