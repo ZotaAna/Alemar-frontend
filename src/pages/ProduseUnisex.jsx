@@ -102,7 +102,7 @@ export default function ProduseUnisex() {
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
 
-      <main className="produse-container">
+      <main className="produse-container produse-container--unisex">
         <div className="produse-header">
           <h1 className="produse-titlu">Parfumuri de Unisex</h1>
           <p className="produse-subtitlu">

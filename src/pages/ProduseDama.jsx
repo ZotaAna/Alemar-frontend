@@ -102,7 +102,7 @@ export default function ProduseDama() {
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
 
-      <main className="produse-container">
+      <main className="produse-container produse-container--dama">
         <div className="produse-header">
           <h1 className="produse-titlu">Parfumuri de Damă</h1>
           <p className="produse-subtitlu">
