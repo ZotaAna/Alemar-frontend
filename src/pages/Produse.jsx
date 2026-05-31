@@ -48,6 +48,10 @@ console.log("produse incarcate:", produse.length, produse[0]?.gender);
       });
   }, []);
 
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, [categorie]);
+
   const handleSearch = (e) => {
     e.preventDefault();
   };
