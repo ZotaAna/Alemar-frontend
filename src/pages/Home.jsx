@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/home.css";
+import CategoryBar from "../components/CategoryBar";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -7,10 +8,10 @@ export default function Home() {
   const [produse, setProduse] = useState([]);
   const carouselRef = useRef(null);
 
-const storedUser = localStorage.getItem("user");
-const token = localStorage.getItem("token");
-const user = (storedUser && token) ? JSON.parse(storedUser) : null;
-const nume = user?.first_name || user?.firstName || null;
+  const storedUser = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  const user = (storedUser && token) ? JSON.parse(storedUser) : null;
+  const nume = user?.first_name || user?.firstName || null;
 
   useEffect(() => {
     fetch("https://alemar-backend.onrender.com/api/products")
@@ -47,13 +48,13 @@ const nume = user?.first_name || user?.firstName || null;
   return (
     <div>
 
-    <div className="promo-banner">
-  <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
-  <span className="promo-separator">|</span>
-  <span className="promo-item">🚚 Transport gratuit la comenzile de peste 300 de lei!</span>
-  <span className="promo-separator">|</span>
-  <span className="promo-item">👥 Invită-ți prietenii să-și facă cont și primești un cod de reducere!</span>
-</div>
+      <div className="promo-banner">
+        <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
+        <span className="promo-separator">|</span>
+        <span className="promo-item">🚚 Transport gratuit la comenzile de peste 300 de lei!</span>
+        <span className="promo-separator">|</span>
+        <span className="promo-item">👥 Invită-ți prietenii să-și facă cont și primești un cod de reducere!</span>
+      </div>
 
       <nav className="navbar">
         <div className="logo-container">
@@ -74,8 +75,8 @@ const nume = user?.first_name || user?.firstName || null;
         <div className={`nav-links ${menuOpen ? "active" : ""}`}>
           <a href="#acasa" className="nav-link-activ">Acasă</a>
           <a href="/produse">Produse</a>
-         <a href="/cos">Coșul meu</a>
-         <a href="/cont">Contul meu</a>
+          <a href="/cos">Coșul meu</a>
+          <a href="/cont">Contul meu</a>
           <a href="/login" className="nav-login-btn">Login</a>
         </div>
 
@@ -86,13 +87,13 @@ const nume = user?.first_name || user?.firstName || null;
         </div>
       </nav>
 
+      <CategoryBar />
+
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
 
       <main className="home-container">
-
-        {/* CARUSEL */}
         <section className="carousel-section">
           <h2 className="carousel-title">Recomandările noastre</h2>
           <div className="carousel-wrapper">
@@ -118,7 +119,6 @@ const nume = user?.first_name || user?.firstName || null;
             <button className="carousel-btn dreapta" onClick={scrollRight}>›</button>
           </div>
         </section>
-
       </main>
     </div>
   );

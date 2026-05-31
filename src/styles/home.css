@@ -139,6 +139,7 @@ body {
 /* ---------- HOME CONTENT ---------- */
 .home-container {
   padding: 9rem 2rem 2rem;
+  padding-top: 210px;
   text-align: center;
 }
 
@@ -207,7 +208,7 @@ body {
 /* ---------- WELCOME BANNER ---------- */
 .welcome-banner {
   position: fixed;
-  top: 109px;
+  top: 151px;
   left: 0;
   width: 100%;
   box-sizing: border-box;
@@ -219,7 +220,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 999;
+  z-index: 997;
 }
 
 /* ---------- NAV LOGIN ---------- */

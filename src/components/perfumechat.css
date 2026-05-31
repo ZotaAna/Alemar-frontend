@@ -1,0 +1,139 @@
+.pchat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 370px;
+  max-height: 560px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  animation: pchat-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pchat-pop {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.pchat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(135deg, #111 0%, #2a1a0e 100%);
+  color: white;
+  flex-shrink: 0;
+}
+
+.pchat-header-left { display: flex; align-items: center; gap: 0.75rem; }
+
+.pchat-avatar {
+  width: 38px; height: 38px;
+  background: rgba(201,145,79,0.25);
+  border: 1.5px solid rgba(201,145,79,0.5);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+
+.pchat-title { font-family: 'Dancing Script', cursive; font-size: 1.2rem; color: #e0a96d; }
+.pchat-subtitle { font-family: 'Lato', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+
+.pchat-close {
+  background: rgba(255,255,255,0.1); border: none; color: white;
+  width: 30px; height: 30px; border-radius: 50%; font-size: 1.3rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; padding: 0;
+}
+.pchat-close:hover { background: rgba(255,255,255,0.2); }
+
+.pchat-messages {
+  flex: 1; overflow-y: auto; padding: 1rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  background: #f9f7f5;
+  scrollbar-width: thin; scrollbar-color: #ddd transparent;
+}
+
+.pchat-msg { display: flex; align-items: flex-end; gap: 0.5rem; }
+.pchat-msg--user { flex-direction: row-reverse; }
+
+.pchat-msg-avatar {
+  width: 26px; height: 26px;
+  background: linear-gradient(135deg, #111, #2a1a0e);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; flex-shrink: 0;
+}
+
+.pchat-msg-bubble {
+  max-width: 80%; padding: 0.65rem 0.9rem; border-radius: 16px;
+  font-family: 'Lato', sans-serif; font-size: 0.875rem; line-height: 1.5; color: #222;
+}
+
+.pchat-msg--assistant .pchat-msg-bubble {
+  background: #fff; border-radius: 4px 16px 16px 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.pchat-msg--user .pchat-msg-bubble {
+  background: linear-gradient(135deg, #c9914f, #a16943);
+  color: white; border-radius: 16px 4px 16px 16px;
+}
+
+.pchat-typing { display: flex; align-items: center; gap: 4px; padding: 0.65rem 1rem; min-width: 52px; }
+.pchat-typing span {
+  width: 7px; height: 7px; background: #c9914f; border-radius: 50%;
+  animation: typing-bounce 1.2s infinite;
+}
+.pchat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.pchat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+.pchat-suggestions {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: 0.5rem 1rem; background: #f9f7f5;
+  border-top: 1px solid #ede8e3; flex-shrink: 0;
+}
+
+.pchat-suggestion {
+  background: #fff; border: 1px solid #e8ddd4; border-radius: 20px;
+  padding: 0.4rem 0.9rem; font-family: 'Lato', sans-serif;
+  font-size: 0.8rem; color: #a16943; cursor: pointer; text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+.pchat-suggestion:hover { background: #fdf5ee; border-color: #c9914f; }
+
+.pchat-input-area {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1rem; border-top: 1px solid #ede8e3;
+  background: #fff; flex-shrink: 0;
+}
+
+.pchat-input {
+  flex: 1; border: 1.5px solid #e0d4c8; border-radius: 12px;
+  padding: 0.55rem 0.85rem; font-family: 'Lato', sans-serif;
+  font-size: 0.875rem; resize: none; outline: none;
+  line-height: 1.4; color: #222; background: #fdfaf8;
+  transition: border-color 0.15s;
+}
+.pchat-input:focus { border-color: #c9914f; }
+
+.pchat-send {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #c9914f, #a16943);
+  color: white; border: none; font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.pchat-send:hover:not(.pchat-send--disabled) { opacity: 0.85; transform: scale(1.05); }
+.pchat-send--disabled { opacity: 0.35; cursor: not-allowed; }
+
+@media (max-width: 430px) {
+  .pchat-widget { bottom: 0; right: 0; width: 100%; max-height: 85vh; border-radius: 20px 20px 0 0; }
+}
