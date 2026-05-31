@@ -139,7 +139,7 @@ console.log("produse incarcate:", produse.length, produse[0]?.gender);
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
 
-      <main className="produse-container">
+      <main className={`produse-container ${categorie ? "produse-container--filtrat" : ""}`}>
         <div className="produse-header">
           <h1 className="produse-titlu">
             {categorie && titluMap[categorie] ? titluMap[categorie] : "Toate produsele"}
