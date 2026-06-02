@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./perfumechat.css";
 
-const SYSTEM_PROMPT = `Ești un consultant expert în parfumuri pentru magazinul Alemar Store. Numele tău este Alemar AI. Răspunzi EXCLUSIV la întrebări despre parfumuri: recomandări, note olfactive, familii olfactive, ocazii, sezoane, longevitate, sillage, EDP vs EDT, îngrijire. Dacă ești întrebat altceva, spui politicos că ajuți doar cu parfumuri. Ești cald, entuziast, vorbești în română. Răspunsuri concise (max 4 propoziții). Folosești ocazional emoji: 🌸 🌿 ✨ 🕯️`;
-
 export default function PerfumeChat({ isOpen, onClose }) {
   const [messages, setMessages] = useState([
     { role: "assistant", content: "Bună! Sunt Alemar AI, consultantul tău de parfumuri 🌸 Cu ce te pot ajuta?" }
@@ -28,13 +26,10 @@ export default function PerfumeChat({ isOpen, onClose }) {
     setInput("");
     setLoading(true);
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/ai/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
           messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
         }),
       });
