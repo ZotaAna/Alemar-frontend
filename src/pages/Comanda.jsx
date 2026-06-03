@@ -9,6 +9,7 @@ import {
 } from "@stripe/react-stripe-js";
 import "../styles/comanda.css";
 import Toast from "../components/Toast";
+import CategoryBar from "../components/CategoryBar";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
@@ -254,6 +255,8 @@ export default function Comanda() {
           {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
         </div>
 
+        <CategoryBar />
+
         <main className="comanda-container">
           <h1 className="comanda-titlu">Plată online</h1>
           <div className="stripe-container">
@@ -321,6 +324,8 @@ export default function Comanda() {
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
+
+      <CategoryBar />
 
       <main className="comanda-container">
         <h1 className="comanda-titlu">Plasează comanda</h1>

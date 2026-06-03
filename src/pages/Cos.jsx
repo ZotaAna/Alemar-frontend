@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/cos.css";
+import CategoryBar from "../components/CategoryBar";
 
 export default function Cos() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -78,6 +79,8 @@ export default function Cos() {
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
+
+      <CategoryBar />
 
       <main className="cos-container">
         <h1 className="cos-titlu">Coșul meu</h1>

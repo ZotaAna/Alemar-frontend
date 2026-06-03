@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/cont.css";
+import CategoryBar from "../components/CategoryBar";
 
 export default function Cont() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -146,6 +147,8 @@ export default function Cont() {
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
       </div>
+
+       <CategoryBar />
 
       <main className="cont-container">
         <div className="cont-layout">
