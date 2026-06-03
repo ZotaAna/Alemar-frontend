@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/home.css";
 import CategoryBar from "../components/CategoryBar";
+import CaruselPersonalizat from "../components/CaruselPersonalizat";
+import ParfumulZilei from "../components/ParfumulZilei";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [produse, setProduse] = useState([]);
+  const [noteTop, setNoteTop] = useState([]);
+  const [esteLogat, setEsteLogat] = useState(false);
   const carouselRef = useRef(null);
 
   const storedUser = localStorage.getItem("user");
@@ -14,6 +18,7 @@ export default function Home() {
   const nume = user?.first_name || user?.firstName || null;
 
   useEffect(() => {
+    setEsteLogat(!!(storedUser && token));
     fetch("https://alemar-backend.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => setProduse(data))
@@ -25,29 +30,18 @@ export default function Home() {
     console.log("Caut produs:", searchTerm);
   };
 
-  const scrollLeft = () => {
-    carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
-  };
+  const scrollLeft = () => carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  const scrollRight = () => carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
 
-  const scrollRight = () => {
-    carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  };
+  const renderStele = (rating) =>
+    [1, 2, 3, 4, 5].map((i) => (
+      <span key={i} className={i <= Math.round(rating) ? "stea plina" : "stea goala"}>★</span>
+    ));
 
-  const renderStele = (rating) => {
-    const stele = [];
-    for (let i = 1; i <= 5; i++) {
-      stele.push(
-        <span key={i} className={i <= Math.round(rating) ? "stea plina" : "stea goala"}>
-          ★
-        </span>
-      );
-    }
-    return stele;
-  };
+  const handleProfilIncarcat = (note) => setNoteTop(note || []);
 
   return (
     <div>
-
       <div className="promo-banner">
         <span className="promo-item">🎁 Creează-ți un cont și primești un cod de reducere la prima comandă!</span>
         <span className="promo-separator">|</span>
@@ -61,7 +55,6 @@ export default function Home() {
           <img src="/logo.jpg" alt="Logo" className="logo-img" />
           <h2>Alemar Store</h2>
         </div>
-
         <form className="search-bar" onSubmit={handleSearch}>
           <input
             type="text"
@@ -71,7 +64,6 @@ export default function Home() {
           />
           <button type="submit">🔍</button>
         </form>
-
         <div className={`nav-links ${menuOpen ? "active" : ""}`}>
           <a href="#acasa" className="nav-link-activ">Acasă</a>
           <a href="/produse">Produse</a>
@@ -79,11 +71,8 @@ export default function Home() {
           <a href="/cont">Contul meu</a>
           <a href="/login" className="nav-login-btn">Login</a>
         </div>
-
         <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
       </nav>
 
@@ -94,18 +83,21 @@ export default function Home() {
       </div>
 
       <main className="home-container">
+
+        {esteLogat && <ParfumulZilei noteTop={noteTop} />}
+
+        {esteLogat && <CaruselPersonalizat onProfilIncarcat={handleProfilIncarcat} />}
+
         <section className="carousel-section">
-          <h2 className="carousel-title">Recomandările noastre</h2>
+          <h2 className="carousel-title">
+            {esteLogat ? "Toate produsele noastre" : "Recomandările noastre"}
+          </h2>
           <div className="carousel-wrapper">
             <button className="carousel-btn stanga" onClick={scrollLeft}>‹</button>
             <div className="carousel-track" ref={carouselRef}>
               {(produse || []).map((produs) => (
                 <div className="produs-card" key={produs.id}>
-                  <img
-                    src={produs.image_url}
-                    alt={produs.name}
-                    className="produs-img"
-                  />
+                  <img src={produs.image_url} alt={produs.name} className="produs-img" />
                   <div className="produs-info">
                     <p className="produs-nume">{produs.name}</p>
                     <div className="produs-stele">{renderStele(produs.rating)}</div>
@@ -119,6 +111,7 @@ export default function Home() {
             <button className="carousel-btn dreapta" onClick={scrollRight}>›</button>
           </div>
         </section>
+
       </main>
     </div>
   );
