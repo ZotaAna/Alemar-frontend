@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/cont.css";
 import CategoryBar from "../components/CategoryBar";
+import ColectieOlfactiva from "../components/ColectieOlfactiva";
 
 export default function Cont() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -164,6 +165,7 @@ export default function Cont() {
               <button className={sectiune === "parola" ? "activ" : ""} onClick={() => { setSectiune("parola"); setMesaj(""); setEroare(""); }}>🔒 Schimbă parola</button>
               <button className={sectiune === "comenzi" ? "activ" : ""} onClick={() => { setSectiune("comenzi"); setMesaj(""); setEroare(""); }}>📦 Comenzile mele</button>
               <button className={sectiune === "adrese" ? "activ" : ""} onClick={() => { setSectiune("adrese"); setMesaj(""); setEroare(""); }}>📍 Adresele mele</button>
+              <button className={sectiune === "colectie" ? "activ" : ""} onClick={() => { setSectiune("colectie"); setMesaj(""); setEroare(""); }}>🧬 Colecția mea olfactivă</button>
               <button className="delogare-btn" onClick={delogare}>🚪 Deconectare</button>
             </nav>
           </aside>
@@ -302,6 +304,13 @@ export default function Cont() {
                 <button className="cont-btn" onClick={adaugaAdresa}>Adaugă adresa</button>
               </div>
             )}
+
+          {sectiune === "colectie" && (
+           <div className="cont-sectiune">
+             <ColectieOlfactiva />
+          </div>
+)}    
+
           </div>
         </div>
       </main>

@@ -1,0 +1,189 @@
+.co-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.co-header {
+  margin-bottom: 1.5rem;
+}
+
+.co-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: #c9914f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.co-titlu {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.co-subtitlu {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.co-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.co-grafic-wrap {
+  background: #fdf9f6;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #f0e6dd;
+}
+
+.co-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.co-dominanta {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #fdf6f0, #fff);
+  border: 1px solid #f0e6dd;
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.co-dominanta-emoji {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.co-dominanta-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #a16943;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 2px;
+}
+
+.co-dominanta-nume {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.co-dominanta-desc {
+  font-size: 0.83rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.co-note-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a16943;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 0.6rem;
+}
+
+.co-note-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.co-nota-tag {
+  background: #f0e6dd;
+  color: #7a4f2e;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.co-produs-item {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.co-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem;
+  color: #a16943;
+  font-style: italic;
+}
+
+.co-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #f0e6dd;
+  border-top-color: #a16943;
+  border-radius: 50%;
+  animation: coSpin 0.8s linear infinite;
+}
+
+@keyframes coSpin { to { transform: rotate(360deg); } }
+
+.co-gol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  gap: 0.8rem;
+}
+
+.co-gol-icon { font-size: 3rem; }
+
+.co-gol h3 {
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.co-gol p {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+  max-width: 300px;
+}
+
+.co-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #a16943, #c9914f);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.co-btn:hover { opacity: 0.9; }
+
+@media (max-width: 700px) {
+  .co-layout { grid-template-columns: 1fr; }
+}
