@@ -171,16 +171,46 @@ export default function Comanda() {
   };
 
   const handleSubmitRamburs = async () => {
-    const eroriNoi = valideaza();
-    if (Object.keys(eroriNoi).length > 0) {
-      setErori(eroriNoi);
+  const eroriNoi = valideaza();
+  if (Object.keys(eroriNoi).length > 0) {
+    setErori(eroriNoi);
+    return;
+  }
+
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        produse: cos,
+        total_cents: totalFinal * 100,
+        cost_livrare: costLivrare,
+        livrare,
+        plata: "ramburs",
+        form,
+        voucher_code: voucherAplicat ? voucher : null,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setToast({ mesaj: data.message || "Eroare la plasarea comenzii.", tip: "eroare" });
       return;
     }
+
     await folosteVoucher();
-    setToast({ mesaj: "Comanda a fost plasată cu succes! 🎉", tip: "succes" });
+    setToast({ mesaj: `Comanda ${data.order_number} a fost plasată cu succes! 🎉`, tip: "succes" });
     localStorage.removeItem(cosKey);
     setTimeout(() => navigate("/"), 2000);
-  };
+
+  } catch (err) {
+    setToast({ mesaj: "Eroare de rețea. Încearcă din nou.", tip: "eroare" });
+  }
+};
 
   const handleSubmitCard = async () => {
     const eroriNoi = valideaza();
