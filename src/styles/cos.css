@@ -1,4 +1,3 @@
-/* ---------- CONTAINER ---------- */
 .cos-container {
   padding: 9rem 2rem 4rem;
   max-width: 900px;
@@ -13,7 +12,7 @@
   text-align: center;
 }
 
-/* ---------- LISTA ---------- */
+
 .cos-lista {
   display: flex;
   flex-direction: column;
@@ -55,7 +54,7 @@
   margin: 0;
 }
 
-/* ---------- CANTITATE ---------- */
+
 .cos-cantitate {
   display: flex;
   align-items: center;
@@ -84,7 +83,7 @@
   text-align: center;
 }
 
-/* ---------- PRET TOTAL ---------- */
+
 .cos-pret-total {
   font-weight: 700;
   color: #a16943;
@@ -94,7 +93,7 @@
   margin: 0;
 }
 
-/* ---------- STERGE ---------- */
+
 .cos-sterge {
   background: none;
   border: none;
@@ -109,7 +108,7 @@
   color: #e74c3c;
 }
 
-/* ---------- SUMAR ---------- */
+
 .cos-sumar {
   margin-top: 2rem;
   background: white;
@@ -149,7 +148,7 @@
   background-color: #8a5836;
 }
 
-/* ---------- COS GOL ---------- */
+
 .cos-gol {
   text-align: center;
   margin-top: 4rem;
@@ -175,7 +174,7 @@
   background-color: #8a5836;
 }
 
-/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 600px) {
   .cos-item {
     flex-wrap: wrap;

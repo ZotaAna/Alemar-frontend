@@ -1,4 +1,3 @@
-/* ---------- CONTAINER ---------- */
 .comanda-container {
   padding: 60rem 2rem 4rem;
   max-width: 1400px;
@@ -13,7 +12,6 @@
   text-align: center;
 }
 
-/* ---------- LAYOUT ---------- */
 .comanda-layout {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -21,7 +19,7 @@
   align-items: start;
 }
 
-/* ---------- SECTIUNI ---------- */
+
 .comanda-sectiune {
   background: white;
   border-radius: 12px;
@@ -39,7 +37,7 @@
   border-bottom: 2px solid #f0f0f0;
 }
 
-/* ---------- FORM ---------- */
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -84,7 +82,7 @@
   font-size: 0.8rem;
 }
 
-/* ---------- OPTIUNI LIVRARE/PLATA ---------- */
+
 .optiuni-livrare {
   display: flex;
   gap: 1rem;
@@ -128,7 +126,7 @@
   margin: 2px 0 0;
 }
 
-/* ---------- SUMAR ---------- */
+
 .comanda-sumar {
   background: white;
   border-radius: 12px;
@@ -201,7 +199,7 @@
   background-color: #8a5836;
 }
 
-/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 900px) {
   .comanda-layout {
     grid-template-columns: 1fr;
@@ -220,7 +218,7 @@
   }
 }
 
-/* ---------- STRIPE ---------- */
+
 .stripe-container {
   max-width: 560px;
   margin: 0 auto;
@@ -284,7 +282,7 @@
   margin-top: 0;
 }
 
-/* ---------- VOUCHER ---------- */
+
 .voucher-section {
   margin: 1rem 0;
   padding-top: 1rem;

@@ -1,11 +1,10 @@
-/* ---------- CONTAINER ---------- */
 .cont-container {
   padding: 14rem 2rem 4rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* ---------- LAYOUT ---------- */
+
 .cont-layout {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -13,7 +12,7 @@
   align-items: start;
 }
 
-/* ---------- SIDEBAR ---------- */
+
 .cont-sidebar {
   background: white;
   border-radius: 12px;
@@ -91,7 +90,7 @@
   color: #c0392b !important;
 }
 
-/* ---------- CONTINUT ---------- */
+
 .cont-continut {
   display: flex;
   flex-direction: column;
@@ -121,7 +120,7 @@
   margin: 1.5rem 0 1rem;
 }
 
-/* ---------- FORM ---------- */
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -171,7 +170,7 @@
   margin-bottom: 1rem;
 }
 
-/* ---------- BUTON ---------- */
+
 .cont-btn {
   background-color: #a16943ce;
   color: white;
@@ -189,7 +188,7 @@
   background-color: #8a5836;
 }
 
-/* ---------- MESAJE ---------- */
+
 .cont-mesaj {
   padding: 12px 16px;
   border-radius: 8px;
@@ -207,7 +206,7 @@
   color: #e74c3c;
 }
 
-/* ---------- COMENZI ---------- */
+
 .comanda-card {
   border: 1.5px solid #f0f0f0;
   border-radius: 10px;
@@ -266,7 +265,7 @@
   margin-top: 2rem;
 }
 
-/* ---------- ADRESE ---------- */
+
 .adresa-card {
   display: flex;
   justify-content: space-between;
@@ -313,7 +312,7 @@
   border-top: 2px solid #f0f0f0;
 }
 
-/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 768px) {
   .cont-layout {
     grid-template-columns: 1fr;

@@ -9,44 +9,36 @@ export default function LoginSuccess() {
   const closeToast = useCallback(() => setToast(null), []);
 
   useEffect(() => {
-    console.log("🔵 LoginSuccess - Component mounted");
-    
-    const token = searchParams.get("token");
-    console.log("🔵 Token primit:", token);
-    
-    if (!token) {
-      console.log("❌ Nu am token, redirect la /login");
+    const code = searchParams.get("code");
+
+    if (!code) {
       navigate("/login", { replace: true });
       return;
     }
 
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      console.log("🔵 Payload decodat:", payload);
-      
-      const user = {
-        id: payload.userId,
-        email: payload.email,
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        role: payload.role
-      };
-      
-      localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", token);
-      
-      console.log("✅ User salvat în localStorage:", user);
-      console.log("🔵 Navighez spre /home...");
-      
-      setTimeout(() => {
-        navigate("/home", { replace: true });
-      }, 1500);
-      
-    } catch (err) {
-      console.error("❌ Eroare la procesare token:", err);
-      setToast({ mesaj: "Eroare la autentificare!", tip: "eroare" });
-      setTimeout(() => navigate("/login", { replace: true }), 2000);
-    }
+    fetch(`${process.env.REACT_APP_API_URL}/api/auth/exchange?code=${code}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Cod invalid sau expirat.");
+        return res.json();
+      })
+      .then(({ token }) => {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        const user = {
+          id: payload.userId,
+          email: payload.email,
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          role: payload.role,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        setTimeout(() => navigate("/home", { replace: true }), 1500);
+      })
+      .catch((err) => {
+        console.error(err);
+        setToast({ mesaj: "Eroare la autentificare!", tip: "eroare" });
+        setTimeout(() => navigate("/login", { replace: true }), 2000);
+      });
   }, [searchParams, navigate]);
 
   return (

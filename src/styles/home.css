@@ -6,7 +6,7 @@ body {
   background-color: #f4f6fb;
 }
 
-/* ---------- PROMO BANNER ---------- */
+
 .promo-banner {
   position: fixed;
   top: 0;
@@ -53,7 +53,7 @@ body {
   }
 }
 
-/* ---------- NAVBAR ---------- */
+
 .navbar {
   position: fixed;
   top: 37px;
@@ -98,7 +98,7 @@ body {
   color: #f2f2f7;
 }
 
-/* ---------- HAMBURGER ---------- */
+
 .menu-icon {
   display: none;
   flex-direction: column;
@@ -113,7 +113,7 @@ body {
   border-radius: 3px;
 }
 
-/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -136,7 +136,7 @@ body {
   }
 }
 
-/* ---------- HOME CONTENT ---------- */
+
 .home-container {
   padding: 9rem 2rem 2rem;
   padding-top: 750px;
@@ -164,7 +164,7 @@ body {
   border-radius: 50%;
 }
 
-/* ---------- SEARCH BAR ---------- */
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -205,7 +205,7 @@ body {
   }
 }
 
-/* ---------- WELCOME BANNER ---------- */
+
 .welcome-banner {
   position: fixed;
   top: 151px;
@@ -223,7 +223,7 @@ body {
   z-index: 997;
 }
 
-/* ---------- NAV LOGIN ---------- */
+
 .nav-login-btn {
   color: white !important;
   text-decoration: none;
@@ -236,7 +236,7 @@ body {
   color: #f2f2f7 !important;
 }
 
-/* ---------- CARUSEL ---------- */
+
 .carousel-section {
   margin: 2rem auto;
   max-width: 1200px;

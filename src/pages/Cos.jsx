@@ -24,7 +24,7 @@ export default function Cos() {
     localStorage.setItem(cosKey, JSON.stringify(cosNou));
   };
 
-  const crестеCantitate = (id) => {
+  const cresteCantitate = (id) => {
     const cosNou = cos.map((p) =>
       p.id === id ? { ...p, cantitate: p.cantitate + 1 } : p
     );
