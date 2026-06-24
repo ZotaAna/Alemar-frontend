@@ -229,7 +229,9 @@ export default function Comanda() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            amount_cents: Math.round(totalFinal * 100),
+            produse: cos.map((p) => ({ id: p.id, cantitate: p.cantitate })),
+            livrare,
+            voucher_code: voucherAplicat ? voucher : null,
             currency: "ron",
           }),
         }
