@@ -3,16 +3,18 @@
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
+  background: linear-gradient(135deg, #fdfdff, #a16943ce);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-container {
-  background: linear-gradient(135deg, #fdfdff, #a16943ce);
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .login-form {
