@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import Toast from "../components/Toast";
+import CategoryBar from "../components/CategoryBar";
 import "../styles/produsPagina.css";
 
 export default function ProdusPagina() {
@@ -136,6 +137,8 @@ export default function ProdusPagina() {
           <span></span><span></span><span></span>
         </div>
       </nav>
+
+      <CategoryBar />
 
       <div className="welcome-banner">
         {nume ? `Bine ai revenit, ${nume}! 👋` : "Bine ai venit! 👋"}
